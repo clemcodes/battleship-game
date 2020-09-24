@@ -101,9 +101,11 @@ var model = {
       var ship = this.ships[i];
       // return the index of that value in the array(or -1 if it cannot find it)
       var index = ship.locations.indexOf(guess);
-      //TODO
       //check to see if the ship has already been hit
-      if (index >= 0) {
+      if(ship.hits[index] === "hit"){
+        view.displayMessage("Oops, you already hit that location!");
+        return true;
+      } else if (index >= 0) {
         // mark the hits array at the same index
         ship.hits[index] = "hit";
         // notify the view that we got a hit at the location in guess
